@@ -34,11 +34,11 @@ GitHub documentation:
 | --- | --- |
 | `index.html` | Page content, email links, SEO and social metadata |
 | `assets/styles.css` | Layout, colors, typography and responsive styles |
-| `assets/main.js` | Illustrative scenarios, motion controls, email copy and copyright year |
+| `assets/main.js` | Email copy and copyright year |
 | `assets/favicon.svg` | Original vector brand mark |
 | `assets/social-card.png` | Social sharing image |
 | `CNAME` | Primary GitHub Pages custom domain |
 
 Public contact: **admin@signumloop.com**. Update both `index.html` and `assets/main.js` if it changes.
 
-The diagram and animated signal are conceptual illustrations, not a product photograph, live measurements or performance specifications. The page describes a platform in development, does not announce a launch date and does not collect visitor information. Reduced-motion preferences are respected and visitors can pause the animation.
+The static diagram shows the hardware-in-the-loop signal path and AI test supervision. It works with JavaScript disabled.
