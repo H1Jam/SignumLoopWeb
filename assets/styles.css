@@ -132,10 +132,11 @@ h1 > span { color: var(--accent); }
   justify-content: space-between;
   gap: .5rem;
 }
-.stage-icons svg { stroke: #b6d5a5; }
+.stage-icons svg { flex-shrink: 0; stroke: #b6d5a5; }
 .pcb-icon {
   display: block;
-  width: 2.5rem;
+  width: 5rem;
+  min-width: 0;
   height: auto;
 }
 .loop-stage strong {
