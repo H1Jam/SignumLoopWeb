@@ -55,17 +55,46 @@
 
           <figure class="signal-figure" aria-labelledby="signal-caption">
             <figcaption id="signal-caption">The hardware-in-the-loop test cycle</figcaption>
+            <button class="motion-toggle" type="button" aria-label="Pause diagram animation" title="Pause diagram animation" hidden>
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                <path class="pause-glyph" d="M4 3h2.5v10H4zM9.5 3H12v10H9.5z"/>
+                <path class="play-glyph" d="m4 2.5 9 5.5-9 5.5z"/>
+              </svg>
+            </button>
             <div class="loop-envelope">
               <div class="loop-supervisor">AI test supervision</div>
               <ol class="loop-stages" role="list" aria-label="Signal path, in order">
                 <li class="loop-stage stage-engine">
-                  <svg viewBox="0 0 40 32" aria-hidden="true" focusable="false">
-                    <rect x="3" y="2" width="34" height="23" rx="3"/>
-                    <path d="M8 17h4l4-7 5 9 4-6h6M16 25v4m8-4v4m-12 1h16"/>
-                  </svg>
+                  <div class="stage-icons">
+                    <svg viewBox="0 0 40 32" aria-hidden="true" focusable="false">
+                      <rect x="3" y="2" width="34" height="23" rx="3"/>
+                      <path d="M8 17h4l4-7 5 9 4-6h6M16 25v4m8-4v4m-12 1h16"/>
+                    </svg>
+                    <svg class="motion-axes" viewBox="0 0 76 54" aria-hidden="true" focusable="false">
+                      <g class="axis-triad" stroke-width="1.8" font-family="system-ui, sans-serif" font-size="9" font-weight="600">
+                        <g color="#e79d8a">
+                          <path stroke="currentColor" d="M18 37 49 18m-6 0h6l-2 6"/>
+                          <text x="53" y="19" fill="currentColor" stroke="none">X</text>
+                        </g>
+                        <g color="#84bbd3">
+                          <path stroke="currentColor" d="m18 37 34 7m-4-4 4 4-6 2"/>
+                          <text x="56" y="48" fill="currentColor" stroke="none">Y</text>
+                        </g>
+                        <g color="#d9c782">
+                          <path stroke="currentColor" d="M18 37V9m-3 5 3-5 3 5"/>
+                          <text x="7" y="12" fill="currentColor" stroke="none">Z</text>
+                        </g>
+                        <circle cx="18" cy="37" r="2.6" fill="#e5ede1" stroke="none"/>
+                      </g>
+                    </svg>
+                  </div>
                   <strong>Simulation engine</strong>
                   <span>Host physics model</span>
-                  <i class="loop-arrow" aria-hidden="true"></i>
+                  <i class="loop-arrow" aria-hidden="true">
+                    <svg class="flow-wave" viewBox="0 0 32 12" preserveAspectRatio="none" focusable="false">
+                      <path class="wave-track" d="M-32 6q8-10 16 0t16 0q8-10 16 0t16 0" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </i>
                 </li>
                 <li class="loop-stage stage-sensors">
                   <div class="stage-icons">
@@ -77,7 +106,9 @@
                   </div>
                   <strong>Sensor emulator</strong>
                   <span>SignumLoop hardware</span>
-                  <i class="loop-arrow" aria-hidden="true"></i>
+                  <i class="loop-arrow" aria-hidden="true">
+                    <span class="flow-bits"><span class="bit-track">01010<br>10101<br>01010<br>10101</span></span>
+                  </i>
                 </li>
                 <li class="loop-stage stage-board">
                   <svg viewBox="0 0 40 32" aria-hidden="true" focusable="false">
@@ -87,7 +118,11 @@
                   </svg>
                   <strong>Customer board</strong>
                   <span>Original firmware</span>
-                  <i class="loop-arrow" aria-hidden="true"></i>
+                  <i class="loop-arrow" aria-hidden="true">
+                    <svg class="flow-wave" viewBox="0 0 32 12" preserveAspectRatio="none" focusable="false">
+                      <path class="wave-track" d="M-32 6q8-10 16 0t16 0q8-10 16 0t16 0" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </i>
                 </li>
                 <li class="loop-stage stage-capture">
                   <div class="stage-icons">
@@ -99,7 +134,9 @@
                   </div>
                   <strong>Actuator capture</strong>
                   <span>SignumLoop hardware</span>
-                  <i class="loop-arrow" aria-hidden="true"></i>
+                  <i class="loop-arrow" aria-hidden="true">
+                    <span class="flow-bits"><span class="bit-track">01010<br>10101<br>01010<br>10101</span></span>
+                  </i>
                 </li>
               </ol>
             </div>
