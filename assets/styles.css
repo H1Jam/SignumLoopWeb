@@ -125,7 +125,13 @@ h1 > span { color: var(--accent); }
 .stage-sensors { grid-area: sensors; }
 .stage-board { grid-area: board; }
 .stage-capture { grid-area: capture; }
-.stage-sensors svg, .stage-capture svg { stroke: #b6d5a5; }
+.pcb-icon {
+  display: block;
+  width: 4rem;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: .75rem;
+}
 .loop-stage strong {
   font-weight: 550;
   font-size: clamp(.9375rem, 1.4vw, 1.125rem);
