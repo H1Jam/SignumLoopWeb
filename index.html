@@ -114,6 +114,11 @@
                   </div>
                   <strong>Sensor emulator</strong>
                   <span>SignumLoop hardware</span>
+                  <ul class="sensor-interfaces" role="list" aria-label="Sensor interfaces to the customer board">
+                    <li>SPI</li>
+                    <li>I²C</li>
+                    <li>UART</li>
+                  </ul>
                   <i class="loop-arrow" aria-hidden="true">
                     <span class="flow-bits"><span class="bit-track">01010<br>10101<br>01010<br>10101</span></span>
                   </i>
@@ -148,7 +153,7 @@
                 </li>
               </ol>
             </div>
-            <p class="loop-note">The emulator supplies sensor readings to your board. Its actuator commands feed back into the simulation through the capture hardware.</p>
+            <p class="loop-note">Your board reads multiple simulated sensors through the emulator. The capture hardware sends your board’s actuator commands back to the simulation.</p>
           </figure>
         </section>
 

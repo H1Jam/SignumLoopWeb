@@ -52,7 +52,9 @@ h1 > span { color: var(--accent); }
   --loop-line: #415348;
   --wire: #94ad9b;
   --column-gap: clamp(1.625rem, 3.8vw, 3.25rem);
-  --row-gap: 2.5rem;
+  --stack-step: clamp(.2rem, .43vw, .375rem);
+  --stack-depth: calc(var(--stack-step) + var(--stack-step));
+  --row-gap: calc(2.5rem + var(--stack-depth));
   position: relative;
   width: min(100%, 37rem);
   min-width: 0;
@@ -136,7 +138,15 @@ h1 > span { color: var(--accent); }
   stroke-linejoin: round;
 }
 .stage-engine { grid-area: engine; }
-.stage-sensors { grid-area: sensors; }
+.stage-sensors {
+  grid-area: sensors;
+  padding-bottom: .55rem;
+  box-shadow:
+    var(--stack-step) var(--stack-step) 0 -1px #15201b,
+    var(--stack-step) var(--stack-step) 0 0 #415448,
+    var(--stack-depth) var(--stack-depth) 0 -1px #101713,
+    var(--stack-depth) var(--stack-depth) 0 0 #35463b;
+}
 .stage-board { grid-area: board; }
 .stage-capture { grid-area: capture; }
 .loop-stage > svg, .stage-icons { margin-bottom: .75rem; }
@@ -184,6 +194,22 @@ h1 > span { color: var(--accent); }
   font-size: .8125rem;
   line-height: 1.4;
 }
+.sensor-interfaces {
+  display: flex;
+  align-self: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .2rem clamp(.3rem, .8vw, .8rem);
+  margin: .7rem 0 0;
+  padding: .45rem 0 0;
+  border-top: 1px solid #2e3d34;
+  list-style: none;
+  font: 600 .6875rem/1.25 ui-monospace, Consolas, monospace;
+  letter-spacing: .025em;
+  color: #b6d5a5;
+}
+.sensor-interfaces > :first-child { color: #93cae0; }
+.sensor-interfaces > :nth-child(2) { color: #edaa94; }
 .loop-arrow {
   position: absolute;
   display: block;
@@ -212,7 +238,10 @@ h1 > span { color: var(--accent); }
   height: calc(var(--row-gap) - .4rem);
   border-left: 1px solid;
 }
-.stage-sensors .loop-arrow { top: calc(100% + .2rem); }
+.stage-sensors .loop-arrow {
+  top: calc(100% + var(--stack-depth) + .2rem);
+  height: calc(var(--row-gap) - var(--stack-depth) - .4rem);
+}
 .stage-sensors .loop-arrow::after { bottom: 0; left: -1px; transform: translateX(-50%) rotate(135deg); }
 .stage-capture .loop-arrow { bottom: calc(100% + .2rem); }
 .stage-capture .loop-arrow::after { top: 0; left: -1px; transform: translateX(-50%) rotate(-45deg); }
