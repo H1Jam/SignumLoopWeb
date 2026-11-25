@@ -100,14 +100,19 @@
   }
   .case-road-marks { animation: case-road-roll var(--case-cycle) linear infinite; }
   .case-car { animation: case-car-travel var(--case-cycle) ease-in-out infinite; }
+  .case-car-rim {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: case-wheel-roll var(--case-cycle) linear infinite;
+  }
   .case-car-body {
-    transform-origin: 31px 94px;
+    transform-origin: 64px 94px;
     animation: case-car-pitch var(--case-cycle) ease-in-out infinite;
   }
   .case-brake-light { animation: case-brake-on var(--case-cycle) linear infinite; }
   .case-watch-walk { animation: case-walk-phase var(--case-cycle) steps(1, end) infinite; }
   .case-watch-run { animation: case-run-phase var(--case-cycle) steps(1, end) infinite; }
-  .use-case:not(.is-playing) :is(.case-trace-window, .case-road-marks, .case-car, .case-car-body, .case-brake-light, .case-watch-walk, .case-watch-run) {
+  .use-case:not(.is-playing) :is(.case-trace-window, .case-road-marks, .case-car, .case-car-body, .case-car-rim, .case-brake-light, .case-watch-walk, .case-watch-run) {
     animation-play-state: paused;
   }
 }
@@ -126,6 +131,13 @@
   from, to { transform: translateX(0); }
   32% { transform: translateX(5px); }
   48%, 71% { transform: translateX(8px); }
+}
+@keyframes case-wheel-roll {
+  from { transform: rotate(0); }
+  31% { transform: rotate(216deg); }
+  40% { transform: rotate(262deg); }
+  51%, 75% { transform: rotate(288deg); }
+  to { transform: rotate(432deg); }
 }
 @keyframes case-car-pitch {
   0%, 30%, 65%, 100% { transform: rotate(0); }
