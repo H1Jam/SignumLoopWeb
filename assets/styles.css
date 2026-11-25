@@ -52,7 +52,7 @@ h1 > span { color: var(--accent); }
   --loop-line: #415348;
   --wire: #94ad9b;
   --column-gap: clamp(1.625rem, 3.8vw, 3.25rem);
-  --stack-step: clamp(.2rem, .43vw, .375rem);
+  --stack-step: clamp(.3rem, .52vw, .46rem);
   --stack-depth: calc(var(--stack-step) + var(--stack-step));
   --row-gap: calc(2.5rem + var(--stack-depth));
   position: relative;
@@ -141,11 +141,13 @@ h1 > span { color: var(--accent); }
 .stage-sensors {
   grid-area: sensors;
   padding-bottom: .55rem;
+  background: #283c31;
+  border-color: #4b6354;
   box-shadow:
-    var(--stack-step) var(--stack-step) 0 -1px #0f1613,
-    var(--stack-step) var(--stack-step) 0 0 #2b3730,
-    var(--stack-depth) var(--stack-depth) 0 -1px #0b100e,
-    var(--stack-depth) var(--stack-depth) 0 0 #243029;
+    var(--stack-step) var(--stack-step) 0 -1px #16251c,
+    var(--stack-step) var(--stack-step) 0 0 #354b3c,
+    var(--stack-depth) var(--stack-depth) 0 -1px #090f0c,
+    var(--stack-depth) var(--stack-depth) 0 0 #26372c;
 }
 .stage-board { grid-area: board; }
 .stage-capture { grid-area: capture; }
@@ -202,7 +204,7 @@ h1 > span { color: var(--accent); }
   gap: .2rem clamp(.3rem, .8vw, .8rem);
   margin: .7rem 0 0;
   padding: .45rem 0 0;
-  border-top: 1px solid #2e3d34;
+  border-top: 1px solid #43594a;
   list-style: none;
   font: 600 .6875rem/1.25 ui-monospace, Consolas, monospace;
   letter-spacing: .025em;
