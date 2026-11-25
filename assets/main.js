@@ -8,8 +8,12 @@
   const motionButton = diagram.querySelector(".motion-toggle");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const drawOrientation = createOrientationRenderer(diagram.querySelector(".motion-axes"));
+  const cases = document.querySelectorAll(".use-case");
+  const caseButton = document.querySelector(".case-playback");
+  const canObserve = "IntersectionObserver" in window;
+  const visibleCases = new Set(canObserve ? [] : cases);
   const frameInterval = 1000 / 30;
-  let diagramVisible = !("IntersectionObserver" in window);
+  let diagramVisible = !canObserve;
   let frameRequest = null;
   let lastTime = null;
   let elapsed = 0;
@@ -28,7 +32,11 @@
   }
 
   function updatePlayback() {
-    const playing = diagramVisible && !document.hidden && !reduceMotion.matches && !diagram.hasAttribute("data-paused");
+    const motionAllowed = !document.hidden && !reduceMotion.matches;
+    caseButton.hidden = reduceMotion.matches;
+    const casesEnabled = motionAllowed && !caseButton.hasAttribute("data-paused");
+    cases.forEach(card => card.classList.toggle("is-playing", casesEnabled && visibleCases.has(card)));
+    const playing = diagramVisible && motionAllowed && !diagram.hasAttribute("data-paused");
     diagram.classList.toggle("is-playing", playing);
     if (playing && frameRequest === null) {
       frameRequest = requestAnimationFrame(animateOrientation);
@@ -47,15 +55,31 @@
     updatePlayback();
   });
 
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(([entry]) => {
-      diagramVisible = entry.isIntersecting;
+  caseButton.addEventListener("click", () => {
+    const paused = caseButton.toggleAttribute("data-paused");
+    caseButton.querySelector("span").textContent = paused ? "Resume animations" : "Pause animations";
+    updatePlayback();
+  });
+
+  if (canObserve) {
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (entry.target === diagram) diagramVisible = entry.isIntersecting;
+        else {
+          const card = entry.target.closest(".use-case");
+          if (entry.isIntersecting) visibleCases.add(card);
+          else visibleCases.delete(card);
+        }
+      }
       updatePlayback();
-    }).observe(diagram);
+    });
+    observer.observe(diagram);
+    cases.forEach(card => observer.observe(card.querySelector(".case-art")));
   }
   document.addEventListener("visibilitychange", updatePlayback);
   reduceMotion.addEventListener("change", updatePlayback);
   diagram.classList.add("motion-ready");
+  document.querySelector(".use-cases").classList.add("motion-ready");
   motionButton.hidden = false;
   drawOrientation(0);
   updatePlayback();
