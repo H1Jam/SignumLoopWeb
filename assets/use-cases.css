@@ -47,7 +47,7 @@
   height: auto;
   aspect-ratio: 1.85;
   object-fit: contain;
-  background: #25302b;
+  background: var(--background);
   border-bottom: 1px solid #303e35;
 }
 .hardware-card figcaption {
